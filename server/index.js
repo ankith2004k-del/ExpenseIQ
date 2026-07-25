@@ -13,14 +13,15 @@ app.use(express.json());
 
 app.use("/transactions", transactionRoutes);
 
+// Neon PostgreSQL Connection
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
+// Test database connection
 app.get("/", async (req, res) => {
   try {
     const result = await pool.query("SELECT NOW()");
@@ -32,10 +33,13 @@ app.get("/", async (req, res) => {
     console.error(err);
     res.status(500).json({
       error: "Database connection failed",
+      details: err.message,
     });
   }
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${process.env.PORT}`);
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
