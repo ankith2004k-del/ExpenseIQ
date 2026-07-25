@@ -1,0 +1,1338 @@
+/* ==========================================================
+   ExpenseIQ CSS
+   Part 1
+   Reset • Variables • Global • Layout • Header • Navigation
+========================================================== */
+
+/* =========================
+   RESET
+========================= */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+
+    background:#f5f7fb;
+
+    color:#111827;
+
+    line-height:1.6;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+button,
+input,
+select,
+textarea{
+
+    font-family:inherit;
+
+}
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    outline:none;
+
+}
+
+input,
+select,
+textarea{
+
+    outline:none;
+
+}
+
+::selection{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+
+    --success:#16a34a;
+    --danger:#dc2626;
+    --warning:#d97706;
+
+    --background:#f5f7fb;
+
+    --white:#ffffff;
+
+    --border:#e5e7eb;
+
+    --text:#111827;
+
+    --muted:#6b7280;
+
+    --radius-sm:10px;
+    --radius-md:16px;
+    --radius-lg:22px;
+
+    --shadow-sm:
+        0 2px 8px rgba(0,0,0,.05);
+
+    --shadow:
+        0 8px 24px rgba(15,23,42,.08);
+
+    --shadow-lg:
+        0 20px 40px rgba(15,23,42,.12);
+
+    --transition:.25s ease;
+
+}
+
+/* =========================
+   ROOT
+========================= */
+
+#root{
+
+    min-height:100vh;
+
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.app{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:0 auto;
+
+    padding:40px 32px 60px;
+
+}
+
+.dashboard,
+.summary-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+.dashboard-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.card{
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+    margin-bottom:10px;
+
+}
+
+.header-top{
+
+    text-align:center;
+
+    margin-bottom:28px;
+
+}
+
+.header h1{
+
+    font-size:2.8rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    letter-spacing:-1px;
+
+}
+
+.header p{
+
+    margin-top:8px;
+
+    color:var(--muted);
+
+    font-size:1rem;
+
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+}
+
+.nav-link{
+
+    padding:12px 24px;
+
+    border-radius:14px;
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.nav-link:hover{
+
+    transform:translateY(-2px);
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.nav-link.active{
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+
+    color:white;
+
+}
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+}
+
+.summary-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.summary-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.summary-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:5px;
+
+}
+
+.summary-card.balance::before{
+
+    background:var(--primary);
+
+}
+
+.summary-card.income::before{
+
+    background:var(--success);
+
+}
+
+.summary-card.expense::before{
+
+    background:var(--danger);
+
+}
+
+.summary-card h3{
+
+    font-size:.9rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    color:var(--muted);
+
+    margin-bottom:14px;
+
+}
+
+.summary-card p{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+}
+
+.summary-card.balance p{
+
+    color:var(--primary);
+
+}
+
+.summary-card.income p{
+
+    color:var(--success);
+
+}
+
+.summary-card.expense p{
+
+    color:var(--danger);
+
+}
+
+/* =========================
+   SUMMARY SHORTCUT
+========================= */
+
+.summary-link-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:24px;
+
+    padding:28px;
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.summary-link-content{
+
+    flex:1;
+
+}
+
+.summary-link-content h3{
+
+    margin-bottom:8px;
+
+}
+
+.summary-link-content p{
+
+    color:var(--muted);
+
+}
+
+.summary-btn{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:14px 24px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.summary-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+/* ==========================================================
+   ExpenseIQ CSS
+   Part 2
+   Transaction Form • Inputs • Search • Filters
+========================================================== */
+
+/* =========================
+   TRANSACTION FORM
+========================= */
+
+.transaction-form{
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    padding:32px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.transaction-form h2{
+
+    margin-bottom:24px;
+
+    font-size:1.4rem;
+
+    color:var(--text);
+
+    font-weight:700;
+
+}
+
+.transaction-form form{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+/* Full Width Fields */
+
+.form-group-full{
+
+    grid-column:1 / -1;
+
+}
+
+/* Labels */
+
+.transaction-form label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/* Inputs */
+
+.transaction-form input,
+
+.transaction-form select,
+
+.transaction-form textarea{
+
+    width:100%;
+
+    padding:15px 16px;
+
+    border:1.5px solid var(--border);
+
+    border-radius:12px;
+
+    background:#fff;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    transition:all .25s ease;
+
+}
+
+.transaction-form textarea{
+
+    resize:vertical;
+
+    min-height:100px;
+
+}
+
+.transaction-form input::placeholder,
+
+.transaction-form textarea::placeholder{
+
+    color:#9ca3af;
+
+}
+
+.transaction-form input:hover,
+
+.transaction-form select:hover,
+
+.transaction-form textarea:hover{
+
+    border-color:#cbd5e1;
+
+}
+
+.transaction-form input:focus,
+
+.transaction-form select:focus,
+
+.transaction-form textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* Remove Number Arrows */
+
+input[type=number]{
+
+    appearance:textfield;
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+
+input[type=number]::-webkit-outer-spin-button{
+
+    appearance:none;
+
+}
+
+/* =========================
+   FORM BUTTONS
+========================= */
+
+.form-buttons{
+
+    grid-column:1 / -1;
+
+    display:flex;
+
+    gap:16px;
+
+    margin-top:8px;
+
+}
+
+.primary-btn{
+
+    flex:1;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.primary-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+.secondary-btn{
+
+    flex:1;
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.secondary-btn:hover{
+
+    background:#e5e7eb;
+
+}
+
+button:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container{
+
+    margin-top:12px;
+
+}
+
+.search-bar{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:1.5px solid var(--border);
+
+    border-radius:14px;
+
+    background:white;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+.search-bar::placeholder{
+
+    color:#9ca3af;
+
+}
+
+.search-bar:hover{
+
+    border-color:#cbd5e1;
+
+}
+
+.search-bar:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* =========================
+   FILTER BAR
+========================= */
+
+.filter-bar{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-top:20px;
+
+}
+
+.filter-bar select{
+
+    width:100%;
+
+    padding:15px 16px;
+
+    border:1.5px solid var(--border);
+
+    border-radius:12px;
+
+    background:white;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.filter-bar select:hover{
+
+    border-color:#cbd5e1;
+
+}
+
+.filter-bar select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* =========================
+   SECTION TITLES
+========================= */
+
+.section-title{
+
+    font-size:1.3rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    margin-bottom:6px;
+
+}
+
+.history-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.transaction-count{
+
+    background:#eef4ff;
+
+    color:var(--primary);
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+}
+
+/* =========================
+   RESPONSIVE FORM
+========================= */
+
+@media(max-width:768px){
+
+    .transaction-form{
+
+        padding:24px;
+
+    }
+
+    .transaction-form form{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .form-group-full{
+
+        grid-column:auto;
+
+    }
+
+    .form-buttons{
+
+        grid-column:auto;
+
+        flex-direction:column;
+
+    }
+
+    .filter-bar{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/* ==========================================================
+   ExpenseIQ CSS
+   Part 3
+   Transactions • Summary • Responsive • Animations
+========================================================== */
+
+/* =========================
+   TRANSACTION LIST
+========================= */
+
+.transaction-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.transaction-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:10px;
+
+}
+
+.group-title{
+
+    font-size:.85rem;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    color:var(--muted);
+
+}
+
+/* =========================
+   TRANSACTION CARD
+========================= */
+
+.transaction-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:24px;
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:var(--shadow);
+
+    transition:all .25s ease;
+
+}
+
+.transaction-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.transaction-info{
+
+    flex:1;
+
+}
+
+.transaction-info h3{
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    margin-bottom:6px;
+
+}
+
+.transaction-info p{
+
+    color:var(--muted);
+
+    font-size:.9rem;
+
+}
+
+.transaction-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
+    gap:12px;
+
+}
+
+/* =========================
+   AMOUNT BADGES
+========================= */
+
+.income-text{
+
+    background:#dcfce7;
+
+    color:var(--success);
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+}
+
+.expense-text{
+
+    background:#fee2e2;
+
+    color:var(--danger);
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.transaction-actions{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.action-btn{
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:10px;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.edit-btn{
+
+    background:#eef4ff;
+
+    color:var(--primary);
+
+}
+
+.edit-btn:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.delete-btn{
+
+    background:#fef2f2;
+
+    color:var(--danger);
+
+}
+
+.delete-btn:hover{
+
+    background:var(--danger);
+
+    color:white;
+
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.no-transactions{
+
+    background:white;
+
+    border:2px dashed var(--border);
+
+    border-radius:18px;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+}
+
+/* =========================
+   SUMMARY PAGE
+========================= */
+
+.summary-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:24px;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:24px;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.stat-card h4{
+
+    color:var(--muted);
+
+    margin-bottom:10px;
+
+}
+
+.stat-card p{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#cbd5e1;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#94a3b8;
+
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+.fade-in{
+
+    animation:fadeIn .4s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+    .summary-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .app{
+
+        padding:24px 18px 40px;
+
+    }
+
+    .header h1{
+
+        font-size:2rem;
+
+    }
+
+    .summary-link-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .summary-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .transaction-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .transaction-right{
+
+        width:100%;
+
+        align-items:flex-start;
+
+    }
+
+    .transaction-actions{
+
+        width:100%;
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .action-btn{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .app{
+
+        padding:16px;
+
+    }
+
+    .header h1{
+
+        font-size:1.7rem;
+
+    }
+
+    .summary-card{
+
+        padding:20px;
+
+    }
+
+    .transaction-form{
+
+        padding:20px;
+
+    }
+
+    .transaction-card{
+
+        padding:18px;
+
+    }
+
+}

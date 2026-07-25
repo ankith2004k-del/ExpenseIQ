@@ -1,0 +1,1531 @@
+/* ==========================================================
+   ExpenseIQ - Modern CSS
+   Part 1
+   Reset • Variables • Layout • Header • Navigation
+========================================================== */
+
+/* ---------- Reset ---------- */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+
+    background:#f5f7fb;
+
+    color:#111827;
+
+    line-height:1.6;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+/* ---------- Variables ---------- */
+
+:root{
+
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+
+    --success:#16a34a;
+
+    --danger:#dc2626;
+
+    --background:#f5f7fb;
+
+    --card:#ffffff;
+
+    --border:#e5e7eb;
+
+    --text:#111827;
+
+    --muted:#6b7280;
+
+    --radius:18px;
+
+    --shadow:
+        0 8px 24px rgba(15,23,42,.08);
+
+    --transition:.25s ease;
+
+}
+
+/* ---------- Root ---------- */
+
+#root{
+
+    min-height:100vh;
+
+}
+
+/* ---------- Main Container ---------- */
+
+.app{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:0 auto;
+
+    padding:40px 32px 60px;
+
+}
+
+/* ---------- Page Layout ---------- */
+
+.dashboard,
+.summary-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+/* ---------- Header ---------- */
+
+.header{
+
+    margin-bottom:12px;
+
+}
+
+.header-top{
+
+    text-align:center;
+
+    margin-bottom:28px;
+
+}
+
+.header h1{
+
+    font-size:2.7rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    letter-spacing:-1px;
+
+}
+
+.header p{
+
+    margin-top:8px;
+
+    color:var(--muted);
+
+    font-size:1rem;
+
+}
+
+/* ---------- Navigation ---------- */
+
+.nav-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+}
+
+.nav-link{
+
+    padding:12px 24px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    color:var(--text);
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+
+}
+
+.nav-link:hover{
+
+    transform:translateY(-2px);
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.nav-link.active{
+
+    background:var(--primary);
+
+    color:white;
+
+    border-color:var(--primary);
+
+}
+
+/* ---------- Generic Card ---------- */
+
+.card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+}
+/* ==========================================================
+   Part 2
+   Dashboard Cards • Summary Cards • View Summary Card
+========================================================== */
+
+/* ---------- Summary Cards ---------- */
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+    margin-bottom:10px;
+
+}
+
+.summary-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:26px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.summary-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
+
+}
+
+/* Top Border */
+
+.summary-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+}
+
+/* Balance */
+
+.summary-card.balance::before{
+
+    background:var(--primary);
+
+}
+
+/* Income */
+
+.summary-card.income::before{
+
+    background:var(--success);
+
+}
+
+/* Expense */
+
+.summary-card.expense::before{
+
+    background:var(--danger);
+
+}
+
+.summary-card h3{
+
+    color:var(--muted);
+
+    font-size:15px;
+
+    font-weight:600;
+
+    margin-bottom:14px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+
+}
+
+.summary-card p{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+}
+
+.summary-card.balance p{
+
+    color:var(--primary);
+
+}
+
+.summary-card.income p{
+
+    color:var(--success);
+
+}
+
+.summary-card.expense p{
+
+    color:var(--danger);
+
+}
+
+/* ---------- Summary Shortcut ---------- */
+
+.summary-link-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+    background:white;
+
+    padding:24px 28px;
+
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.summary-link-card:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.summary-link-content{
+
+    flex:1;
+
+}
+
+.summary-link-content h3{
+
+    font-size:1.3rem;
+
+    color:var(--text);
+
+    margin-bottom:8px;
+
+}
+
+.summary-link-content p{
+
+    color:var(--muted);
+
+    line-height:1.7;
+
+}
+
+/* Button */
+
+.summary-btn{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:14px 26px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+    white-space:nowrap;
+
+}
+
+.summary-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+/* ---------- Dashboard Sections ---------- */
+
+.dashboard-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.section-title{
+
+    font-size:1.25rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+.history-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.transaction-count{
+
+    color:var(--muted);
+
+    font-weight:600;
+
+    background:#eef2ff;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+}
+/* ==========================================================
+   Part 3
+   Transaction Form • Inputs • Buttons
+========================================================== */
+
+/* ---------- Transaction Form ---------- */
+
+.transaction-form{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.transaction-form:hover{
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.10);
+
+}
+
+.transaction-form form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ---------- Labels ---------- */
+
+.transaction-form label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/* ---------- Inputs ---------- */
+
+.transaction-form input,
+
+.transaction-form select{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:1.5px solid var(--border);
+
+    border-radius:14px;
+
+    background:#fff;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    transition:all .25s ease;
+
+}
+
+.transaction-form input::placeholder{
+
+    color:#9ca3af;
+
+}
+
+.transaction-form input:hover,
+
+.transaction-form select:hover{
+
+    border-color:#cbd5e1;
+
+}
+
+/* ---------- Focus ---------- */
+
+.transaction-form input:focus,
+
+.transaction-form select:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* ---------- Number Input ---------- */
+
+input[type="number"]{
+
+    appearance:textfield;
+
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+
+input[type="number"]::-webkit-outer-spin-button{
+
+    appearance:none;
+
+    margin:0;
+
+}
+
+/* ---------- Date ---------- */
+
+input[type="date"]{
+
+    cursor:pointer;
+
+}
+
+/* ---------- Form Buttons ---------- */
+
+.form-buttons{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-top:10px;
+
+}
+
+/* ---------- Primary Button ---------- */
+
+.primary-btn{
+
+    flex:1;
+
+    background:var(--primary);
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+.primary-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(37,99,235,.28);
+
+}
+
+.primary-btn:active{
+
+    transform:translateY(0);
+
+}
+
+/* ---------- Secondary Button ---------- */
+
+.secondary-btn{
+
+    flex:1;
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+.secondary-btn:hover{
+
+    background:#e5e7eb;
+
+}
+
+/* ---------- Disabled ---------- */
+
+button:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+/* ---------- Smooth Animation ---------- */
+
+.transaction-form{
+
+    animation:fadeUp .45s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+/* ==========================================================
+   Part 4
+   Search • Filters • Transaction History
+========================================================== */
+
+/* ---------- Search ---------- */
+
+.search-container{
+
+    width:100%;
+
+}
+
+.search-bar{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:1.5px solid var(--border);
+
+    border-radius:14px;
+
+    background:#fff;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    transition:all .25s ease;
+
+}
+
+.search-bar::placeholder{
+
+    color:#9ca3af;
+
+}
+
+.search-bar:hover{
+
+    border-color:#cbd5e1;
+
+}
+
+.search-bar:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* ---------- Filters ---------- */
+
+.filter-bar{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.filter-bar select{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:1.5px solid var(--border);
+
+    border-radius:14px;
+
+    background:#fff;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+.filter-bar select:hover{
+
+    border-color:#cbd5e1;
+
+}
+
+.filter-bar select:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* ---------- Transaction List ---------- */
+
+.transaction-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ---------- Group ---------- */
+
+.transaction-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+.group-title{
+
+    font-size:14px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+
+    letter-spacing:1px;
+
+    margin-top:10px;
+
+}
+
+/* ---------- Transaction Card ---------- */
+
+.transaction-card{
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:var(--shadow);
+
+    transition:all .25s ease;
+
+}
+
+.transaction-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.12);
+
+}
+
+/* ---------- Card Layout ---------- */
+
+.transaction-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:24px;
+
+}
+
+.transaction-info{
+
+    flex:1;
+
+}
+
+.transaction-info h3{
+
+    font-size:18px;
+
+    margin-bottom:6px;
+
+    color:var(--text);
+
+}
+
+.transaction-info p{
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+/* ---------- Right ---------- */
+
+.transaction-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
+}
+
+/* ---------- Amount Badge ---------- */
+
+.income-text,
+
+.expense-text{
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    font-size:15px;
+
+}
+
+.income-text{
+
+    background:#dcfce7;
+
+    color:var(--success);
+
+}
+
+.expense-text{
+
+    background:#fee2e2;
+
+    color:var(--danger);
+
+}
+
+/* ---------- Buttons ---------- */
+
+.transaction-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:12px;
+
+}
+
+.action-btn{
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:10px 16px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+.edit-btn{
+
+    background:#eff6ff;
+
+    color:var(--primary);
+
+}
+
+.edit-btn:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.delete-btn{
+
+    background:#fef2f2;
+
+    color:var(--danger);
+
+}
+
+.delete-btn:hover{
+
+    background:var(--danger);
+
+    color:#fff;
+
+}
+
+/* ---------- Empty State ---------- */
+
+.no-transactions{
+
+    background:#fff;
+
+    border:2px dashed var(--border);
+
+    border-radius:18px;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:16px;
+
+}
+
+/* ---------- Tablet ---------- */
+
+@media(max-width:900px){
+
+    .filter-bar{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:768px){
+
+    .transaction-card{
+
+        padding:18px;
+
+    }
+
+    .transaction-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+
+    }
+
+    .transaction-right{
+
+        width:100%;
+
+        align-items:flex-start;
+
+    }
+
+    .transaction-actions{
+
+        width:100%;
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .action-btn{
+
+        width:100%;
+
+    }
+
+}
+/* ==========================================================
+   Part 5
+   Summary Page • Responsive • Finishing Touches
+========================================================== */
+
+/* ---------- Summary Page ---------- */
+
+.summary-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+.summary-title{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+.summary-subtitle{
+
+    color:var(--muted);
+
+    margin-top:6px;
+
+}
+
+/* ---------- Statistics Grid ---------- */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:24px;
+
+}
+
+.stat-card{
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:24px;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.stat-card h4{
+
+    color:var(--muted);
+
+    margin-bottom:10px;
+
+    font-size:.95rem;
+
+}
+
+.stat-card p{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+/* ---------- Monthly Summary ---------- */
+
+.month-summary{
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.month-summary h3{
+
+    margin-bottom:18px;
+
+    font-size:1.4rem;
+
+}
+
+.month-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:14px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.month-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.month-name{
+
+    font-weight:600;
+
+}
+
+.month-income{
+
+    color:var(--success);
+
+    font-weight:700;
+
+}
+
+.month-expense{
+
+    color:var(--danger);
+
+    font-weight:700;
+
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#cbd5e1;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#94a3b8;
+
+}
+/* =========================
+   Month Selector
+========================= */
+
+.month-selector{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-bottom:24px;
+
+}
+
+.month-selector{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin:24px 0;
+
+    padding:20px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.month-selector label{
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.month-selector input[type="month"]{
+
+    min-width:220px;
+
+    padding:14px 18px;
+
+    border:1.5px solid var(--border);
+
+    border-radius:12px;
+
+    background:white;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.month-selector input[type="month"]:hover{
+
+    border-color:var(--primary);
+
+}
+
+.month-selector input[type="month"]:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* ---------- Selection ---------- */
+
+::selection{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:1024px){
+
+    .app{
+
+        padding:30px 24px 50px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .app{
+
+        padding:24px 18px 40px;
+
+    }
+
+    .header h1{
+
+        font-size:2rem;
+
+    }
+
+    .summary-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .summary-link-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .summary-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .month-row{
+
+        flex-direction:column;
+
+        gap:6px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .app{
+
+        padding:16px;
+
+    }
+
+    .header h1{
+
+        font-size:1.7rem;
+
+    }
+
+    .summary-card{
+
+        padding:20px;
+
+    }
+
+    .transaction-form{
+
+        padding:20px;
+
+    }
+
+    .transaction-card{
+
+        padding:16px;
+
+    }
+
+}
+
+/* ---------- Fade Animation ---------- */
+
+.fade-in{
+
+    animation:fadeIn .4s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
